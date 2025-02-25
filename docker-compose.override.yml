@@ -6,7 +6,7 @@
      - "traefik.http.middlewares.gzip.compress=true"
      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
      - "traefik.http.routers.zammad-01-http.entryPoints=port80_http"
-     - "traefik.http.routers.zsmmaa-01-http.middlewares=redirect-to-https"
+     - "traefik.http.routers.zammad-01-http.middlewares=redirect-to-https"
      - "traefik.http.routers.zammad-01-http.rule=Host(`ticket.diath.systems`) && PathPrefix(`/`)"
      - "traefik.http.routers.zammad-01-http.service=gitea-01-http"
      - "traefik.http.routers.zammad-01-https.entryPoints=port443_https"
