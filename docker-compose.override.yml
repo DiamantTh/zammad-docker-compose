@@ -1,0 +1,20 @@
+
+     
+  zammad-nginx:
+   labels:
+     - "traefik.enable=true"
+     - "traefik.http.middlewares.gzip.compress=true"
+     - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+     - "traefik.http.routers.zammad-01-http.entryPoints=port80_http"
+     - "traefik.http.routers.zsmmaa-01-http.middlewares=redirect-to-https"
+     - "traefik.http.routers.zammad-01-http.rule=Host(`ticket.diath.systems`) && PathPrefix(`/`)"
+     - "traefik.http.routers.zammad-01-http.service=gitea-01-http"
+     - "traefik.http.routers.zammad-01-https.entryPoints=port443_https"
+     - "traefik.http.routers.zammad-01-https.middlewares=gzip"
+     - "traefik.http.routers.zammad-01-https.rule=Host(`ticket.diath.systems`) && PathPrefix(`/`)"
+     - "traefik.http.routers.zammad-01-https.service=gitea-01-https"
+     - "traefik.http.routers.zammad-01-https.tls.certresolver=letsencrypt"
+     - "traefik.http.routers.zammad-01-https.tls=true"
+     - "traefik.http.services.zammad-01-http.loadbalancer.server.port=8080"
+     - "traefik.http.services.zammad-01-https.loadbalancer.server.port=8080"
+ 
